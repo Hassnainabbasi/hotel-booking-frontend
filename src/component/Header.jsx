@@ -16,12 +16,14 @@ export default function Header() {
     <>
       <header className="main-header">
         <div className="container">
-          <Link to={'/'}>
+          <Link to={"/"}>
             <h1 className="logo">Logo</h1>
           </Link>
 
           <nav>
             <Link to={"/"}>Home</Link>
+            <Link to={"/rooms"}>Rooms</Link>
+    
             {user ? (
               <>
                 <Link to={"/create-room"}>Create</Link>

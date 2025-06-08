@@ -10,6 +10,8 @@ import Register from './pages/register/Register'
 import Header from './component/Header'
 import Dashboard from './pages/dashboard/Dashboard';
 import { CreateRoom } from './pages/createroom/CreateRoom';
+import { Rooms } from './pages/rooms/Rooms';
+import { Room } from './pages/room/Room';
 
 function App() {
 
@@ -22,6 +24,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/create-room" element={<CreateRoom />} />
+        <Route path="/rooms" element={<Rooms />} />
+        <Route path="/rooms/all/:id" element={<Room />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,0 +1,23 @@
+#room{
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        padding: 1rem;
+    }
+    .img-wrapper{
+        width: 100%;
+        height: 60vh;
+        margin-bottom: 1rem;
+    }
+    .heading{
+        text-transform: capitalize;
+    }
+    p {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    .text-wrapper{
+        text-align: center;
+    }
+}
