@@ -36,7 +36,7 @@ export const loginUser = createAsyncThunk(
         headers: {
           "Content-Type": "application/json",
         },
-        credentials : "include",
+        credentials: "include",
         body: JSON.stringify(userData),
       });
 
@@ -45,39 +45,42 @@ export const loginUser = createAsyncThunk(
         return thunkApi.rejectWithValue(err);
       }
 
-      const data = await res.json()
-      localStorage.setItem("user", JSON.stringify(data))
-      return data
+      const data = await res.json();
+      localStorage.setItem("user", JSON.stringify(data));
+      return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
   }
 );
 
-export const logoutUser = createAsyncThunk("auth/logout", async(__, thunkApi) =>{
+export const logoutUser = createAsyncThunk(
+  "auth/logout",
+  async (__, thunkApi) => {
     try {
-        const res = await fetch("http://localhost:3000/api/user/logout",{
-            method : "GET",
-            credentials: "include"
-        });
-        if (!res.ok) {
-            const err = await res.json()
-           return thunkApi.rejectWithValue(err.message);
-        }
-        
-        const data = await res.json()
-        localStorage.removeItem("user")
-        return data
+      const res = await fetch("http://localhost:3000/api/user/logout", {
+        method: "GET",
+        credentials: "include",
+      });
+      if (!res.ok) {
+        const err = await res.json();
+        return thunkApi.rejectWithValue(err.message);
+      }
+
+      const data = await res.json();
+      localStorage.removeItem("user");
+      return data;
     } catch (error) {
-        const err = await res.json
-        thunkApi.rejectWithValue(err.message)
+      const err = await res.json;
+      thunkApi.rejectWithValue(err.message);
     }
-})
+  }
+);
 
 const initialState = {
   user: user ? user : null,
   isLoading: false,
-  isSucess: false,
+  isSuccess: false,
   isError: false,
   message: "",
 };
@@ -88,7 +91,7 @@ export const authSlice = createSlice({
   reducers: {
     reset: (state) => {
       state.isLoading = false;
-      state.isSucess = false;
+      state.isSuccess = false;
       state.isError = false;
       state.message = "";
     },
@@ -100,7 +103,7 @@ export const authSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isSucess = true;
+        state.isSuccess = true;
         state.user = action.payload;
       })
       .addCase(registerUser.rejected, (state, action) => {
@@ -113,7 +116,7 @@ export const authSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isSucess = true;
+        state.isSuccess = true;
         state.user = action.payload;
       })
       .addCase(loginUser.rejected, (state, action) => {
@@ -122,12 +125,12 @@ export const authSlice = createSlice({
         state.message = action.payload;
       })
       .addCase(logoutUser.pending, (state) => {
-        state.isLoading = true
+        state.isLoading = true;
       })
       .addCase(logoutUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isSucess = true;
-        state.user = null
+        state.isSuccess = true;
+        state.user = null;
       })
       .addCase(logoutUser.rejected, (state, action) => {
         state.isLoading = false;

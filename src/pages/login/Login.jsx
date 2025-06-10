@@ -11,7 +11,7 @@ export default function Login() {
 
   const { email, password } = formData;
 
-  const { user, isSucess } = useSelector((state) => state.auth);
+  const { user, isSuccess } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -34,11 +34,11 @@ export default function Login() {
   };
 
   useEffect(() => {
-    if (isSucess) {
-      navigate("/")
-      dispatch(reset())
+    if (isSuccess) {
+      navigate("/");
+      dispatch(reset());
     }
-  }, [isSucess, dispatch, navigate, user]);
+  }, [isSuccess, dispatch, navigate, user]);
 
   return (
     <div className="container">

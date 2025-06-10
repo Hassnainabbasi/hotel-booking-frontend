@@ -8,8 +8,8 @@ export const CreateRoom = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [files, setFiles] = useState("");
-  const { isSucess } = useSelector((state) => state.room);
-  const { rooms } = useSelector((state) => state.room)
+  const { isSuccess } = useSelector((state) => state.room);
+  const { rooms } = useSelector((state) => state.room);
   const [formData, setFormData] = useState({
     name: "",
     price: "",
@@ -21,7 +21,6 @@ export const CreateRoom = () => {
     if (!user) {
       navigate("/");
     }
-  
   }, [user]);
 
   const { name, price, des, roomNumbers } = formData;
@@ -38,6 +37,10 @@ export const CreateRoom = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!name || !price || !roomNumbers) {
+      return;
+    }
 
     const roomArray = roomNumbers.split(",").map((item) => {
       return {
@@ -89,15 +92,15 @@ export const CreateRoom = () => {
     };
 
     console.log(dataToSubmit);
-    dispatch(createRoom(dataToSubmit))
+    dispatch(createRoom(dataToSubmit));
   };
 
   useEffect(() => {
-    if (isSucess) {
+    if (isSuccess) {
       dispatch(reset());
       navigate("/dashboard");
     }
-  }, [isSucess, dispatch, navigate]);
+  }, [isSuccess, dispatch, navigate]);
 
   return (
     <div className="container">

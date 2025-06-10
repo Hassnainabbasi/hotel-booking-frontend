@@ -12,6 +12,7 @@ import Dashboard from './pages/dashboard/Dashboard';
 import { CreateRoom } from './pages/createroom/CreateRoom';
 import { Rooms } from './pages/rooms/Rooms';
 import { Room } from './pages/room/Room';
+import { EditRoom } from './pages/editroom/EditRoom';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/create-room" element={<CreateRoom />} />
         <Route path="/rooms" element={<Rooms />} />
         <Route path="/rooms/all/:id" element={<Room />} />
+        <Route path="/rooms/edit/:id" element={<EditRoom />} />
       </Routes>
     </BrowserRouter>
   );

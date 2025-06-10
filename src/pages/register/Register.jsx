@@ -15,7 +15,7 @@ export default function Register() {
 
   const { name, email, password } = formData;
 
-  const { user, isSucess } = useSelector((state) => state.auth);
+  const { user, isSuccess } = useSelector((state) => state.auth);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -37,11 +37,11 @@ export default function Register() {
   };
 
   useEffect(() => {
-    if (isSucess) {
-        navigate('/login')
-        dispatch(reset())
+    if (isSuccess) {
+      navigate("/login");
+      dispatch(reset());
     }
-  }, [isSucess, user, dispatch, navigate]);
+  }, [isSuccess, user, dispatch, navigate]);
 
   return (
     <div className="container">

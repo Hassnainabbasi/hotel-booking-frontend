@@ -5,14 +5,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { RoomList } from "../../component/RoomList";
 
 export const Rooms = () => {
-  const { rooms, isLoading } = useSelector((state) => state.room);
+  const { rooms = [], isLoading = false } = useSelector((state) => state.room || {});
   const navigate = useNavigate()
   const dispatch = useDispatch()
   useEffect(() => {
    dispatch(getRooms())
-  }, []);
+  }, [dispatch]);
 
-  console.log(rooms);
+  console.log("Rooms data:", rooms);
+  console.log("Is loading:", isLoading);
+
   if(isLoading){
     return (
       <div>
@@ -30,7 +32,9 @@ export const Rooms = () => {
       <div className="container">
         <h1 className="heading center">Rooms</h1>
         <div className="content-wrapper">
-          {rooms.length > 0 ? <RoomList data={rooms} /> : null}
+          {rooms.length > 0 ? <RoomList data={rooms} /> : 
+          <h1 className="heading center">No Room are Available</h1>
+          }
         </div>
       </div>
     </div>
