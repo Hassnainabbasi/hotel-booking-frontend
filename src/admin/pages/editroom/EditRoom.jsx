@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { reset, updateRoom } from "../../feautures/room/roomSlice";
+import { reset, updateRoom } from "../../../admin/feautures/room/roomSlice"
 
 export const EditRoom = () => {
   const [formData, setFormData] = useState({

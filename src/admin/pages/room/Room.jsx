@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "./room.styles.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteRoom, reset } from "../../feautures/room/roomSlice";
+import { deleteRoom, reset } from "../../../admin/feautures/room/roomSlice";
+import { Carousel } from "../../../admin/component/Carousel";
 
 export const Room = () => {
   const [data, setData] = useState(null);
@@ -11,7 +12,7 @@ export const Room = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const { isSuccess } = useSelector((state) => state.room);
-  console.log(isSuccess,"is Success")
+  console.log(isSuccess, "is Success");
   console.log(user);
   useEffect(() => {
     const getRooms = async () => {
@@ -22,7 +23,7 @@ export const Room = () => {
         if (res.ok) {
           const data = await res.json();
           console.log(data);
-          console.log(data.img);
+          console.log(data.img, "this is ");
           setData(data);
         }
       } catch (err) {
@@ -54,7 +55,8 @@ export const Room = () => {
       {data ? (
         <div>
           <div className="img-wrapper">
-            <img src={data.img[0]} alt="" />
+            <Carousel data={data.img} />
+            {/* <img src={data.img[0]} alt="" /> */}
           </div>
           <div className="text-wrapper">
             <h1 className="heading center">{data.name}</h1>
@@ -68,9 +70,9 @@ export const Room = () => {
             )}
           </div>
         </div>
-      ) : 
-      <h1 className="heading center">No Rooms Available</h1>
-      }
+      ) : (
+        <h1 className="heading center">No Rooms Available</h1>
+      )}
     </div>
   );
 };

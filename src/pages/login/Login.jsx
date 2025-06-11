@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { loginUser, reset } from "../../feautures/auth/authSlice";
+import { loginUser, reset } from "../../admin/feautures/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 

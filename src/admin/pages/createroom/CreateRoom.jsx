@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { createRoom, reset } from "../../feautures/room/roomSlice";
+import { useDropzone } from "react-dropzone";
+import { createRoom, reset } from "../../../admin/feautures/room/roomSlice"
 
 export const CreateRoom = () => {
   const { user } = useSelector((state) => state.auth);
@@ -102,6 +103,17 @@ export const CreateRoom = () => {
     }
   }, [isSuccess, dispatch, navigate]);
 
+  
+  const onDrop = (acceptedFiles) => {
+    setFiles(acceptedFiles);
+  };
+
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: {"image/*": []},
+    multiple: true
+  });
+
   return (
     <div className="container">
       <h1 className="heading center">CreateRoom</h1>
@@ -141,8 +153,18 @@ export const CreateRoom = () => {
             ></textarea>
           </div>
           <div className="input-group">
-            <label htmlFor="images">Images</label>
-            <input type="file" name="file" onChange={handleFileChange} />
+            {/* <label htmlFor="images">Images</label>
+            <input type="file" name="file" onChange={handleFileChange} /> */}
+            <div
+              {...getRootProps()}
+              className="border-dashed border-2 border-gray-300 rounded-lg p-4 text-center"
+            >
+              <input {...getInputProps()} />
+              <p className="text-gray-500">
+                Drag & drop an image, or click to select
+              </p>
+             
+            </div>
           </div>
           <button type="submit">Sumbit</button>
         </form>

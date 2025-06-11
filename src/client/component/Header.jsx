@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./header.styles.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser, reset } from "../feautures/auth/authSlice";
+import { logoutUser, reset } from "../../admin/feautures/auth/authSlice";
 
 export default function Header() {
   const { user } = useSelector((state) => state.auth);

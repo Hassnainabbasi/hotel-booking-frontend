@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { registerUser, reset } from "../../feautures/auth/authSlice";
+import { registerUser, reset } from "../../admin/feautures/auth/authSlice";
 
 export default function Register() {
   const [formData, setFormData] = useState({
