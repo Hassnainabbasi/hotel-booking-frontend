@@ -21,7 +21,7 @@ export default function Header() {
           </Link>
 
           <nav>
-            <Link to={"/"}>Home</Link>
+            {user?.isAdmin && <Link to={"/dashboard"}>Dashboard</Link>}
             <Link to={"/rooms"}>Rooms</Link>
 
             {user ? (

@@ -2,15 +2,7 @@ import React from "react";
 import "./tablecomponent.styles.scss";
 import { Link } from "react-router-dom";
 
-const BookingList = ({ data, onDelete }) => {
-  const handleDelete = (user) => {
-    const confirmDelete = window.confirm(
-      `Are you sure you want to delete the booking for ${user.name}?`
-    );
-    if (confirmDelete) {
-      onDelete(user.id);
-    }
-  };
+const BookingList = ({ data}) => {
 
   return (
     <div className="container">
