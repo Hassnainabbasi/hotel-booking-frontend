@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import BASE_URL from "../../../../constant";
 
 const user = JSON.parse(localStorage.getItem("user"));
 
@@ -6,7 +7,7 @@ export const registerUser = createAsyncThunk(
   "auth/register",
   async (userData, thunkApi) => {
     try {
-      const res = await fetch("http://localhost:3000/api/user", {
+      const res = await fetch(`${BASE_URL}/api/user`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -31,7 +32,7 @@ export const loginUser = createAsyncThunk(
   "auth/login",
   async (userData, thunkApi) => {
     try {
-      const res = await fetch("http://localhost:3000/api/user/login", {
+      const res = await fetch(`${BASE_URL}/api/user/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -58,7 +59,7 @@ export const logoutUser = createAsyncThunk(
   "auth/logout",
   async (__, thunkApi) => {
     try {
-      const res = await fetch("http://localhost:3000/api/user/logout", {
+      const res = await fetch(`${BASE_URL}/api/user/logout`, {
         method: "GET",
         credentials: "include",
       });

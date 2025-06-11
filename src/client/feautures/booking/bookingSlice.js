@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import BASE_URL from "../../../../constant";
 
 const initialState = {
   bookings: [],
@@ -14,7 +15,7 @@ export const createBooking = createAsyncThunk(
   async (bookingData, thunkApi) => {
     try {
       const { roomId, ...rest } = bookingData;
-      const res = await fetch(`http://localhost:3000/api/booking`, {
+      const res = await fetch(`${BASE_URL}/api/booking`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -35,7 +36,7 @@ export const getBooking = createAsyncThunk(
   "booking/getbooking",
   async (_, thunkApi) => {
     try {
-      const res = await fetch(`http://localhost:3000/api/booking`, {
+      const res = await fetch(`${BASE_URL}/api/booking`, {
         method: "GET",
       });
       const data = await res.json();
@@ -54,7 +55,7 @@ export const deleteBooking = createAsyncThunk(
   "/booking/delete",
   async (id, thunkApi) => {
     try {
-      const res = await fetch(`http://localhost:3000/api/booking/${id}`, {
+      const res = await fetch(`${BASE_URL}/api/booking/${id}`, {
         method: "DELETE",
         credentials: "include",
       });
@@ -76,7 +77,7 @@ export const updateBooking = createAsyncThunk(
   async (bookingData, thunkApi) => {
     try {
       const { id, ...rest } = bookingData;
-      const res = await fetch(`http://localhost:3000/api/booking/${id}`, {
+      const res = await fetch(`${BASE_URL}/api/booking/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
