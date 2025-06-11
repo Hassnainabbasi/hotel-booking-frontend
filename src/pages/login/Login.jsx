@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { loginUser, reset } from "../../admin/feautures/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import "./login.styles.scss"
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -11,7 +12,7 @@ export default function Login() {
 
   const { email, password } = formData;
 
-  const { user, isSuccess } = useSelector((state) => state.auth);
+  const { user, isSuccess, isLoading } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -66,7 +67,19 @@ export default function Login() {
             />
           </div>
 
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? (
+              <div className="loader-wrapper">
+                <img
+                  className="loader-img"
+                  src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif "
+                  alt="Loading..."
+                />
+              </div>
+            ) : (
+              "Submit"
+            )}
+          </button>
         </form>
       </div>
     </div>

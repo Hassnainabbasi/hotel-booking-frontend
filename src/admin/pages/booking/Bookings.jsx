@@ -6,6 +6,7 @@ import {
   deleteBooking,
   updateBooking,
 } from "../../../client/feautures/booking/bookingSlice";
+import BASE_URL from "../../../../constant";
 
 export const Bookings = () => {
   const { id } = useParams();
@@ -20,7 +21,7 @@ export const Bookings = () => {
     const getBooking = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`http://localhost:3000/api/booking/${id}`, {
+        const res = await fetch(`${BASE_URL}/api/booking/${id}`, {
           method: "GET",
         });
         if (!res.ok) {

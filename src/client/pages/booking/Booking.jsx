@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./booking.styles.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { createBooking, reset } from "../../feautures/booking/bookingSlice";
+import BASE_URL from "../../../../constant";
 
 export const Booking = () => {
   const { id } = useParams();
@@ -25,7 +26,7 @@ export const Booking = () => {
   useEffect(() => {
     const getRooms = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/rooms/${id}`, {
+        const res = await fetch(`${BASE_URL}/api/rooms/${id}`, {
           method: "GET",
         });
         if (!res.ok) {

@@ -4,6 +4,7 @@ import "./room.styles.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteRoom, reset } from "../../../admin/feautures/room/roomSlice";
 import { Carousel } from "../../../admin/component/Carousel";
+import BASE_URL from "../../../../constant";
 
 export const RoomUser = () => {
   const [data, setData] = useState(null);
@@ -17,7 +18,7 @@ export const RoomUser = () => {
   useEffect(() => {
     const getRooms = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/rooms/${id}`, {
+        const res = await fetch(`${BASE_URL}/api/rooms/${id}`, {
           method: "GET",
         });
         if (res.ok) {

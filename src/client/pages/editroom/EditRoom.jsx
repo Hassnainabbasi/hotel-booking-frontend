@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { reset, updateRoom } from "../../../admin/feautures/room/roomSlice"
+import BASE_URL from "../../../../constant";
 
 export const EditRoom = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +25,7 @@ export const EditRoom = () => {
     dispatch(reset());
     const getRooms = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/rooms/${id}`, {
+        const res = await fetch(`${BASE_URL}/api/rooms/${id}`, {
           method: "GET",
         });
         const data = await res.json();

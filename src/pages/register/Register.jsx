@@ -15,7 +15,7 @@ export default function Register() {
 
   const { name, email, password } = formData;
 
-  const { user, isSuccess } = useSelector((state) => state.auth);
+  const { user, isSuccess, isLoading } = useSelector((state) => state.auth);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -78,8 +78,19 @@ export default function Register() {
               onChange={handleChange}
             />
           </div>
-
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? (
+              <div className="loader-wrapper">
+                <img
+                  className="loader-img"
+                  src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif "
+                  alt="Loading..."
+                />
+              </div>
+            ) : (
+              "Submit"
+            )}
+          </button>
         </form>
       </div>
     </div>
