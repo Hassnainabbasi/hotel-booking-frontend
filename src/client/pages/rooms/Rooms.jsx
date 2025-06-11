@@ -19,13 +19,12 @@ export const Rooms = () => {
 
   if (isLoading) {
     return (
-      <div>
-        <h1 className="heading center">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
-            alt=""
-          />
-        </h1>
+      <div className="loader-wrapper">
+        <img
+          className="loader-img"
+          src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif "
+          alt="Loading..."
+        />
       </div>
     );
   }

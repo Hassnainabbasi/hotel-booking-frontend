@@ -68,7 +68,13 @@ export const RoomUser = () => {
           </div>
         </div>
       ) : (
-        <h1 className="heading center">No Rooms Available</h1>
+        <div className="loader-wrapper">
+          <img
+            className="loader-img"
+            src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif "
+            alt="Loading..."
+          />
+        </div>
       )}
     </div>
   );

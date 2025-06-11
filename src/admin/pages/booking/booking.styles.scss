@@ -5,22 +5,32 @@
     margin: 0 auto;
     text-align: center;
   }
-  p { 
+  p {
     margin-bottom: 1rem;
     font-size: 1.2rem;
   }
   .cta-wrapper {
     button {
-        outline: none;
-        border: none;
-        cursor: pointer;
-        margin-left: 1rem;
-        padding: 1rem 2rem;
-        background-color: black;
-        color: white;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      margin-left: 1rem;
+      padding: 1rem 2rem;
+      background-color: black;
+      color: white;
     }
     .danger {
-        background-color: red;
+      background-color: red;
     }
+  }
+  .loader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+  }
+  
+  .loader-img {
+    max-width: 200px;
   }
 }
